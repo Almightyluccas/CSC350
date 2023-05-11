@@ -1,4 +1,8 @@
 <?php
+
+use model\Cart;
+use model\Login;
+
 include('library.php');
 include_once('model/Login.php');
 include_once('model/Cart.php');
@@ -47,13 +51,13 @@ if($choice=='logon')
 		$message='Invalid-login';
 		$pass=$user='';
 		$choice=null;
-		include('view/login.php' );
+		include('view/login.php');
 	}
 }
 else if($choice=="products")
 {
 		if(!isset($_GET['choice2']))
-			include( 'view/products.php' ) ;
+			include('view/products.php');
 		else
 		{
 			$item=$_GET['item'];
@@ -61,7 +65,7 @@ else if($choice=="products")
 			session_start();
 			$dbcart=new Cart();
 			$dbcart->addItem($_SESSION['username'],$item,$price);
-			include( 'view/products.php' ) ;
+			include('view/products.php');
 		}
 }
 else if($choice=='cart')
@@ -83,11 +87,11 @@ else if($choice=='cart')
 }
 else if($choice=="home")
 {
-	include( 'view/home.php' ) ;
+	include('view/home.php');
 }
 else if($choice=="about")
 {
-	include( 'view/about.php' ) ;
+	include('view/about.php');
 }
 else if($choice=="thankyou")
 {
@@ -95,11 +99,11 @@ else if($choice=="thankyou")
 	$userid=$_SESSION['username'];
 	$dbcart=new Cart();
 	$dbcart->emptyCart($userid);
-	include( 'view/thankyou.php' ) ;
+	include('view/thankyou.php');
 }
 else if($choice=="contact")
 {
-	include( 'view/contact.php' ) ;
+	include('view/contact.php');
 }
 else if($choice=="registration")
 {
@@ -111,6 +115,7 @@ else if($choice=="register")
 	$pass=$_GET['password'];
 	$db=new Login();
 	if($db->register($user,$pass)) header("Location: index.php");
+	//TODO: CHANGE THE ABOVE PARAMETER FOR FIRSTNAME AND LAST NAME + add field to ask for first and last name
 	else
 	{
 		$message="ERROR: Userid Already In Use";
@@ -119,7 +124,7 @@ else if($choice=="register")
 }
 else if($choice=="logoff")
 {
-	include('view/logoff.php' );
+	include('view/logoff.php');
 }
 else if($choice=="logoff2")
 {
@@ -128,6 +133,6 @@ else if($choice=="logoff2")
 	session_destroy();
 	setcookie(session_name(),"",time()-1,"/");
 	$message='Logoff-Succesfull';
-	include('view/login.php' );
+	include('view/login.php');
 }
 ?>
