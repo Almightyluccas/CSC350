@@ -26,3 +26,9 @@ CREATE TABLE cart (
   FOREIGN KEY(product_id) REFERENCES products(product_id),
   FOREIGN KEY(customer_id) REFERENCES users(customer_id)
 );
+
+INSERT INTO products VALUES();
+INSERT INTO products VALUES();
+INSERT INTO products VALUES();
+INSERT INTO products VALUES();
+INSERT INTO products VALUES();
