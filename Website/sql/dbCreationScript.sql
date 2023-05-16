@@ -27,7 +27,14 @@ CREATE TABLE cart (
   FOREIGN KEY(customer_id) REFERENCES users(customer_id)
 );
 
-INSERT INTO products VALUES();
+INSERT INTO products VALUES(
+'001',
+'Air Jordan 4 Retro Thunder',
+'The 2023 Air Jordan 4 Retro Thunder is a re-release of the popular shoe originally launched in 2006.
+The upper is made of black nubuck with yellow accents on the eyelets, quarter panel, and lower tongue. 
+The shoe features Jumpman branding on the tongue tag and heel tab. 
+It has a lightweight yellow polyurethane midsole with a visible Air-sole unit in the heel for cushioning.',
+'150','');
 INSERT INTO products VALUES();
 INSERT INTO products VALUES();
 INSERT INTO products VALUES();
