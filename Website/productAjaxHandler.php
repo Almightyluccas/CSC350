@@ -10,8 +10,10 @@ try{
   $data = json_decode(file_get_contents('php://input'), true);
   $productId = intval($data['productId']);
   $quantity = intval($data['quantity']) ;
+  session_start() ;
+
   $cart = new Cart() ;
-  $cart->addItem(3,$productId,$quantity);
+  $cart->addItem($_SESSION['customerId'],$productId,$quantity);
   $productName = $cart->getProductName($productId) ;
   echo $productName;
 }catch (Exception $error) {

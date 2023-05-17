@@ -1,4 +1,6 @@
 <?php
+/*TODO: Add modal for checkout for keep shopping or go to cart*/
+
 
 
 use model\Login;
@@ -40,6 +42,7 @@ if($choice=='logon')
 		    else session_start();
 			$_SESSION['username'] = $user;
 			$_SESSION['password'] = $pass;
+			$_SESSION['customerId'] = $db->getCustomerId($user) ;
 
 			$_SESSION['ON'] = true;
 
@@ -61,28 +64,20 @@ else if($choice=="products")
 {
 		{
 			$productGen = new Products() ;
-
 			$products = $productGen->getProducts() ;
 			include 'view/products.php' ;
-			;
+
 		}
 }
 else if($choice=='cart')
 {
 	session_start();
-	$userid=$_SESSION['username'];
-	$dbcart=new Cart();
-	$choice2=readValue("choice2");
-	if($choice2=="set")
-	{
-		$item=readValue("item");
-		$qty=readValue("qty");
-		$userid=readValue("userid");
-		$price=readValue("price");
-		$dbcart->setItemNum($userid,$item,$price,$qty);
-	}
-	$output=$dbcart->getCart($userid);
-	include('view/cart.php');
+	$customerId=$_SESSION['customerId'];
+	$cartDB = new Cart ;
+	$cartData = $cartDB->getCartData($customerId) ;
+	$cartTotalQuantity = $cartDB->getTotalQuantity($customerId) ;
+	$cartTotalPrice = $cartDB->getCartTotalPrice($customerId);
+	include('view/cartTemplate.php');
 }
 else if($choice=="home")
 {
@@ -95,9 +90,9 @@ else if($choice=="about")
 else if($choice=="thankyou")
 {
 	session_start();
-	$userid=$_SESSION['username'];
+	$customerId=$_SESSION['customerId'];
 	$dbcart=new Cart();
-	$dbcart->emptyCart($userid);
+	$dbcart->emptyCart($customerId);
 	include('view/thankyou.php');
 }
 else if($choice=="contact")

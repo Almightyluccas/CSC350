@@ -18,7 +18,7 @@ class itemGeneration {
             <div class="input-group-prepend">
               <button class="btn btn-outline-secondary decreaseQuantity" type="button">-</button>
             </div>
-            <input type="text" class="form-control quantitySelector" value="1" aria-label="Quantity">
+            <input type="text" class="orm-control-sm quantitySelector" value="1" aria-label="Quantity">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary increaseQuantity" type="button">+</button>
             </div>
@@ -43,7 +43,8 @@ class itemGeneration {
         <button class="btn btn-link px-2" onclick="this.parentNode.querySelector(\'input[type=number]\').stepDown()">
           <i class="fas fa-minus"></i>
         </button>
-        <input id="form1" min="0" name="quantity" value="' . $quantity . '" type="number" class="form-control form-control-sm" />
+        <input id="form1" min="0" name="quantity" value="' . $quantity . '" type="number" 
+        class="form-control form-control-sm" />
         <button class="btn btn-link px-2" onclick="this.parentNode.querySelector(\'input[type=number]\').stepUp()">
           <i class="fas fa-plus"></i>
         </button>
