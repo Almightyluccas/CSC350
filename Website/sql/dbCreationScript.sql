@@ -39,7 +39,7 @@ It has a lightweight yellow polyurethane midsole with a visible Air-sole unit in
 '150','view/images/001.png')
 ,(
 'Air Jordan 1 Retro High OG Skyline',
-'The Air Jordan 1 Retro High OG 'Skyline' draws inspiration from a classic image of Michael Jordan in mid-flight, set against the Chicago skyline and a dusky sky.
+'The Air Jordan 1 Retro High OG Skyline draws inspiration from a classic image of Michael Jordan in mid-flight, set against the Chicago skyline and a dusky sky.
 The shoes feature mismatched pink and lavender gradient overlays, a white leather base, and black accents on the Swoosh, collar, and lining.
 The vintage off-white midsole has Air-sole cushioning and a black rubber outsole for added support.',
 '120','view/images/002.png')
@@ -63,5 +63,5 @@ The shoe has a NITRO-infused foam midsole and a non-slip rubber outsole with a w
 ,(
 'Louis Vuitton x Air Force 1 Low Monogram Damier Pilot Case',
 ' The Louis Vuitton x Air Force 1 Low Monogram Damier Pilot Case are a collaboration between Louis Vuitton and Jordan to help the environment by recycling while making some fancy shoes.
-Using old thrown away LV bags, you get all the quality of Louis Vuitton's finest products on the go.',
+Using old thrown away LV bags, you get all the quality of Louis Vuitton products on the go.',
 '100','view/images/005.png');
