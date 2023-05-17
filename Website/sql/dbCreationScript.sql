@@ -54,10 +54,10 @@ The high-top design is completed with an aged rubber cupsole and a crimson semi-
 '250','view/images/003.png')
 ,(
 'Rick and Morty x MB.02 Adventures',
-'The Rick and Morty x PUMA MB.02 'Adventures' is a collaboration between LaMelo Ball and the animated series.
+'The Rick and Morty x PUMA MB.02 Adventures is a collaboration between LaMelo Ball and the animated series.
 The signature shoe features a mismatched design, with neon yellow and pink gradient on the right shoe and green and purple gradient on the left.
-LaMelo's wing graphic is incorporated into the engineered mesh upper, and 'Rick and Morty' is inscribed on the forefoot.
-The characters' likeness can be found on the tongue tag and sockliner.
+The wing graphic of Lamelo is incorporated into the engineered mesh upper, and Rick and Morty is inscribed on the forefoot.
+The likeness of the character can be found on the tongue tag and sockliner.
 The shoe has a NITRO-infused foam midsole and a non-slip rubber outsole with a wings-inspired traction pattern.',
 '100','view/images/004.png')
 ,(
