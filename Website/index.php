@@ -1,11 +1,14 @@
 <?php
 
-use model\Cart;
-use model\Login;
 
+use model\Login;
+use model\Cart;
+use model\Products;
+require 'model/Cart.php';
+require 'model/Products.php';
 include('library.php');
 include_once('model/Login.php');
-include_once('model/Cart.php');
+
 
 $choice=readValue('choice');
 $message=readValue('message');
@@ -56,16 +59,12 @@ if($choice=='logon')
 }
 else if($choice=="products")
 {
-		if(!isset($_GET['choice2']))
-			include('view/products.php');
-		else
 		{
-			$item=$_GET['item'];
-			$price=(float)$_GET['price'];
-			session_start();
-			$dbcart=new Cart();
-			$dbcart->addItem($_SESSION['username'],$item,$price);
-			include('view/products.php');
+			$productGen = new Products() ;
+
+			$products = $productGen->getProducts() ;
+			include 'view/products.php' ;
+			;
 		}
 }
 else if($choice=='cart')
