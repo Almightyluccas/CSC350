@@ -54,4 +54,4 @@ INSERT INTO products(productName,description,price,imageUrl) VALUES(
   'Louis Vuitton x Air Force 1 Low Monogram Damier Pilot Case',
   ' The Louis Vuitton x Air Force 1 Low Monogram Damier Pilot Case are a collaboration between Louis Vuitton and Jordan to help the environment by recycling while making some fancy shoes.
   Using old thrown away LV bags, you get all the quality of Louis Vuitton products on the go.',
-  100,'view/images/') ;
+  100,'view/images/005.png') ;
