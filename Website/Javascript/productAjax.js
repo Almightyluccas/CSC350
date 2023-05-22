@@ -1,6 +1,6 @@
 const displayModal = (productName) => {
   const modalHtml = `
-    <div class="modal" tabindex="-1">
+    <div class="modal" tabindex="-1" >
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -76,6 +76,9 @@ addToCartBtn.forEach((currentBtn) => {
 
 
 
+  // const descriptionElement = document.querySelectorAll('.product-description');
+
+
   currentBtn.addEventListener('click', () => {
     const productId = currentBtn.getAttribute('data-productid') ;
     const quantity = currentBtn.closest('.card-body').querySelector('.quantitySelector').value;
@@ -99,3 +102,22 @@ addToCartBtn.forEach((currentBtn) => {
       })
   })
 
+
+
+
+
+
+const showDescriptionButton = document.querySelectorAll('.show-description-btn');
+
+showDescriptionButton.forEach(currentBtn => {
+  currentBtn.addEventListener('click', function() {
+
+    if(currentBtn.textContent === 'Show Description') {
+      currentBtn.textContent = 'Hide Description' ;
+    } else if (currentBtn.textContent === 'Hide Description') {
+      currentBtn.textContent = 'Show Description' ;
+    }
+    const descriptionElement =  currentBtn.nextElementSibling ;
+    descriptionElement.classList.toggle('d-none');
+  });
+})

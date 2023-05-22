@@ -1,6 +1,19 @@
 <?php
-/*TODO: Add modal for checkout for keep shopping or go to cart*/
 
+/*
+ *
+ * Warning: Undefined array key "customerId" in C:\xampp\htdocs\CSC350\Website\index.php on line 75
+
+Fatal error: Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds
+to your MariaDB server version for the right syntax to use near '' at line 4 in
+C:\xampp\htdocs\CSC350\Website\model\Cart.php:78
+Stack trace: #0 C:\xampp\htdocs\CSC350\Website\model\Cart.php(78): mysqli_query(Object(mysqli), '\r\n ...')
+#1 C:\xampp\htdocs\CSC350\Website\index.php(77): model\Cart->getCartData(NULL) #2 {main} thrown in C:\xampp\htdocs\CSC350\Website\model\Cart.php on line 78
+ *
+ *
+ *
+ *
+ * */
 
 
 use model\Login;
@@ -63,11 +76,23 @@ if($choice=='logon')
 else if($choice=="products")
 {
 		{
+
 			$productGen = new Products() ;
 			$products = $productGen->getProducts() ;
 			include 'view/products.php' ;
 
 		}
+}else if($choice =='singleProduct') {
+
+
+
+	$productId = $_GET['productId'] ;
+	$routedFrom = $_GET['frm'] ;
+	$retrieveProduct = new Products() ;
+
+	$product = $retrieveProduct->getSingleProduct($productId) ;
+	include 'view/singleProduct.php' ;
+
 }
 else if($choice=='cart')
 {
@@ -76,7 +101,21 @@ else if($choice=='cart')
 	$cartDB = new Cart ;
 	$cartData = $cartDB->getCartData($customerId) ;
 	$cartTotalQuantity = $cartDB->getTotalQuantity($customerId) ;
-	$cartTotalPrice = $cartDB->getCartTotalPrice($customerId);
+
+
+	if ($cartTotalQuantity > 0 ) {
+		$cartTotalPrice = $cartDB->getCartTotalPrice($customerId);
+		$cartTotalPriceFormatted = '$' . number_format($cartTotalPrice, 2) ;
+		$cartTotalPrice += $cartTotalPrice * 0.08 ;
+		$cartTotalAfterTaxFormatted = '$' . number_format($cartTotalPrice, 2) ;
+	} else {
+		$cartTotalPrice = $cartDB->getCartTotalPrice(0);
+		$cartTotalPriceFormatted = '$' . number_format(0, 2) ;
+		$cartTotalPrice += $cartTotalPrice * 0.08 ;
+		$cartTotalAfterTaxFormatted = '$' . number_format(0, 2) ;
+	}
+
+
 	include('view/cartTemplate.php');
 }
 else if($choice=="home")
@@ -109,7 +148,6 @@ else if($choice=="register")
 	$pass=$_GET['password'];
 	$db=new Login();
 	if($db->register($user,$pass)) header("Location: index.php");
-	//TODO: CHANGE THE ABOVE PARAMETER FOR FIRSTNAME AND LAST NAME + add field to ask for first and last name
 	else
 	{
 		$message="ERROR: Userid Already In Use";

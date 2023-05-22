@@ -3,15 +3,16 @@
 
 
 namespace model;
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-ini_set('error_reporting', E_ALL);
 
 use mysql_xdevapi\Exception;
 use mysqli;
 
 class Cart
 {
-	private $hostName, $username, $password, $database ;
+	private string $hostName , $username, $password, $database ;
 	function __construct() {
 		$this->hostName = 'localhost' ;
 		$this->username = 'root';
@@ -19,8 +20,7 @@ class Cart
 		$this->database = 'csc350';
 	}
 
-	function addItem($customerId, $productId, $quantity)
-	{
+	function addItem($customerId, $productId, $quantity) : void {
 		try {
 			$mysqli = new mysqli($this->hostName, $this->username, $this->password, $this->database);
 			if ($mysqli->connect_errno) {
@@ -44,7 +44,7 @@ class Cart
 					exit();
 				}
 			} else {
-				// If the product doesn't exist, insert a new record
+
 				$product_query = "SELECT * FROM csc350.products WHERE productId = '$productId'";
 				$product_result = $mysqli->query($product_query);
 				$product_row = $product_result->fetch_assoc();
@@ -66,7 +66,7 @@ class Cart
 		}
 	}
 
-	public function getCartData($customerId) {
+	public function getCartData($customerId) : array {
 		try {
 			$connection = mysqli_connect($this->hostName, $this->username, $this->password, $this->database);
 			$query = "
@@ -84,23 +84,39 @@ class Cart
 			} else {
 				error_log("Error: " . mysqli_error($connection));
 			}
-
-			// Close the database connection
 			mysqli_close($connection);
-
 			return $cartData;
 		} catch (Exception $error) {
-			// Handle any other exceptions
 			error_log("There was an error with getCartData(): " . $error->getMessage());
 			return [];
 		}
 	}
+	function emptySingleCartItem($customerId, $productId) : void {
 
-	function emptySingleCartItem($customerId, $productId, $quantity) {
-
-
+    $mysqli = new mysqli($this->hostName, $this->username, $this->password, $this->database);
+    if ($mysqli->connect_errno) {
+      echo "Failed to connect to MySQL at getProductName() Cart-Class: " . $mysqli->connect_error;
+      exit();
+    }
+    $sql = "DELETE FROM csc350.cart WHERE customerId = $customerId AND productId = $productId";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->execute();
+    $stmt->close() ;
 	}
-	function emptyAllCartItems($customerId) {
+  function updateCartItemQuantity($customerId, $productId, $quantity) : void {
+    $mysqli = new mysqli($this->hostName, $this->username, $this->password, $this->database);
+    if ($mysqli->connect_errno) {
+      echo "Failed to connect to MySQL at getProductName() Cart-Class: " . $mysqli->connect_error;
+      exit();
+    }
+    $sql = " UPDATE csc350.cart 
+             SET quantity = $quantity 
+             WHERE customerId = $customerId AND productId = $productId";
+    $stmt = $mysqli->prepare($sql);
+    $stmt->execute();
+    $stmt->close() ;
+  }
+	function emptyAllCartItems($customerId) : void {
 		try{
 			$mysqli = new mysqli($this->hostName, $this->username, $this->password, $this->database);
 			if ($mysqli->connect_errno) {
@@ -111,24 +127,20 @@ class Cart
 			$stmt = $mysqli->prepare($sql);
 			$stmt->bind_param('i', $customerId);
 			$stmt->execute();
+      $stmt->close() ;
 		}catch(Exception $error) {
 			error_log('there was an error clearing the cart: ' .$error->getMessage()) ;
 		}
 	}
-
-	function getProductName($productId) {
-		try{
+	function getProductName($productId) : string {
 			$mysqli = new mysqli($this->hostName, $this->username, $this->password, $this->database);
 			if ($mysqli->connect_errno) {
 				error_log("Failed to connect to MySQL at getProductName() Cart-Class: " . $mysqli->connect_error) ;
 				exit();
 			}
-
 			$sql = "SELECT productName FROM csc350.products WHERE productId = '$productId'";
 			$result = $mysqli->query($sql);
-
 			if ($result && $result->num_rows > 0) {
-
 				$row = $result->fetch_assoc();
 				$productName = $row['productName'];
 			}else {
@@ -136,14 +148,9 @@ class Cart
 			}
 			$mysqli->close();
 			return $productName ;
-
-		}catch(Exception $error) {
-			error_log('There was an error getting the ProductName (getProductName() Cart Class): '
-				.$error->getMessage())  ;
 		}
-		return null ;
-	}
-	function getItemQuantity($customerId, $productId) {
+
+	function getItemQuantity($customerId, $productId) : int {
 		$connection = mysqli_connect($this->hostName, $this->username, $this->password, $this->database);
 		if (!$connection) {
 			die("Connection failed: " . mysqli_connect_error());
@@ -162,7 +169,7 @@ class Cart
 		}
 		return 0 ;
 	}
-	function getTotalQuantity ($customerId) {
+	function getTotalQuantity ($customerId) : int {
 		$connection = mysqli_connect($this->hostName, $this->username, $this->password, $this->database);
 		if (!$connection) {
 			die("Connection failed: " . mysqli_connect_error());
@@ -173,28 +180,25 @@ class Cart
 			$row = mysqli_fetch_assoc($result);
 			$totalQuantity = $row['totalQuantity'];
 			mysqli_close($connection);
-			return $totalQuantity ;
+			return intval($totalQuantity) ;
 		} else {
 			error_log("Error: " . mysqli_error($connection));
 		}
 		return 0;
 	}
 
-	function getItemPrice($customerId, $productId) {
-
+	function getItemPrice($customerId, $productId) : float {
+    return 0 ;
 	}
-	function getItemTotalCost($customerId, $productId) {
+	function getItemTotalCost($customerId, $productId) : float {
 		return $this->getItemQuantity($customerId, $productId) * $this->getItemPrice($customerId, $productId);
 	}
 
-	function getCartTotalPrice($customerId) {
-
-
+	function getCartTotalPrice($customerId) : float {
 		$connection = mysqli_connect($this->hostName, $this->username, $this->password, $this->database);
 		if (!$connection) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
-
 		$query = "SELECT SUM(quantity * price) AS totalPrice FROM csc350.cart WHERE customerId = $customerId";
 		$result = mysqli_query($connection, $query);
 
@@ -202,14 +206,16 @@ class Cart
 			$row = mysqli_fetch_assoc($result);
 			$totalPrice = $row['totalPrice'];
 			mysqli_close($connection);
-			return $totalPrice;
+			return floatval($totalPrice);
 		} else {
 			error_log("Error: " . mysqli_error($connection));
 
 		}
-
 		return 0;
 	}
+  function getCartTotalPriceAfterTax($customerId) : float {
+    $total = $this->getCartTotalPrice($customerId) ;
+    $total += $total * 0.08 ;
+    return  $total;
+  }
 }
-
-
