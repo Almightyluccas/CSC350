@@ -33,8 +33,8 @@ class Login
 			}
 		}
 		####################################################
-		$query="insert into csc350.users 
-            values( '$user' , '$pass', 0)";
+		$query="insert into csc350.users (username, password)
+            values( '$user' , '$pass')";
 		$result = $conn->query($query);
 		if(!$result) die($conn->error);
 		####################################################
@@ -109,4 +109,3 @@ class Login
 	}
 }
 
-?>

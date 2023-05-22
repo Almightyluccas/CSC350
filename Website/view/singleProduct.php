@@ -3,6 +3,7 @@ include_once('checker.php');
 ?>
 
 
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -17,10 +18,8 @@ include_once('checker.php');
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   <title>Document</title>
 
-
 </head>
-<body style="background-color:#656565;">
-
+<body >
 <div id="nav" style="background:black;color:white;">
   <div class="col-sm nav-align"><h1 id="title">BMCC ELECTRONICS</h1></div>
   <div class="col-sm nav-align">
@@ -31,19 +30,47 @@ include_once('checker.php');
 </div>
 
 <div class="container ">
+  <div class="pt-5">
+    <?php
+    if(isset($routedFrom) && $routedFrom == 'products')  {
+      echo '<h6 class="mb-0"><a href="/csc350/Website/index.php?choice=products" class="text-body"><i
+          class="fas fa-long-arrow-alt-left me-2"></i>Back to store</a></h6>' ;
+    } else if(isset($routedFrom) && $routedFrom == 'cart') {
+      echo '<h6 class="mb-0"><a href="/csc350/Website/index.php?choice=cart" class="text-body"><i
+          class="fas fa-long-arrow-alt-left me-2"></i>Back to cart</a></h6>' ;
+    }
+
+
+
+    ?>
+
+  </div>
 <?php
+
 include 'view/itemGeneration.php' ;
 
-$itemGen = new \View\itemGeneration() ;
-if (isset($products)){
-  $itemGen->displayProducts($products, 3);
+$itemGen = new \view\itemGeneration() ;
+
+if (isset($product)) {
+  $itemGen->displaySingleProduct($product) ;
 } else {
   error_log('there was an error generating the products at Products.php $products variable ') ;
 }
-?>
 
+
+?>
 </div>
+
+
+
 <script src="javascript/productAjax.js" > </script>
+
+
+
+
+
+
+
 
 </body>
 </html>
