@@ -16,20 +16,30 @@ include_once('checker.php');
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   <title>Document</title>
+  <style>
+    #title {
+      color: white;
+      font-size: 30px;
+    }
 
+    .button {
+      background: black;
+      font-size: 15px;
+    }
+
+  </style>
 
 </head>
-<body style="background-color:#656565;">
+<body >
 
-<div id="nav" style="background:black;color:white;">
-  <div class="col-sm nav-align"><h1 id="title">BMCC ELECTRONICS</h1></div>
+<div id="nav" style="background:black ;color:white;">
+  <div class="col-sm nav-align"><h1 id="title">Elite Sneakers</h1></div>
   <div class="col-sm nav-align">
 
-    <?php include('view/menu.php'); ?>
+    <?php include('menu.php'); ?>
 
   </div>
 </div>
-
 <div class="container ">
 <?php
 include 'view/itemGeneration.php' ;

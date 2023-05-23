@@ -3,7 +3,7 @@ error_reporting(E_ALL) ;
 ini_set('error_reporting', E_ALL) ;
 
 use model\Cart ;
-require 'model/Cart.php' ;
+require 'model/Cart.php';
 
   $data = json_decode(file_get_contents('php://input'), true) ;
   $choice = $data['type'] ;

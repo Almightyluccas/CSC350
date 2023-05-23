@@ -41,7 +41,7 @@ const displayModal = (productName) => {
   });
   goToCartBtn.addEventListener('click', () => {
     console.log('Button clicked!');
-    window.location.href = '/csc350/Website/index.php?choice=cart';
+    window.location.href = '../../index.php';
   });
 
   modalContainer.addEventListener('click', (event) => {

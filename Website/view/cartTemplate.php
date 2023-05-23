@@ -1,3 +1,8 @@
+<?php
+include_once('checker.php');
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,14 +26,27 @@
 
   <title>Document</title>
   <script src="javascript/cartAjax.js" defer > </script>
-</head>
-<body style="background-color: #484848 ;" >
+  <style>
+    #title {
+      color: white;
+      font-size: 30px;
+    }
 
-<div id="nav" style="background:black;color:white;">
-  <div class="col-sm nav-align"><h1 id="title">BMCC ELECTRONICS</h1></div>
+    .button {
+      background: black;
+      font-size: 15px;
+    }
+
+  </style>
+
+</head>
+<body >
+
+<div id="nav" style="background:black ;color:white;">
+  <div class="col-sm nav-align"><h1 id="title">Elite Sneakers</h1></div>
   <div class="col-sm nav-align">
 
-    <?php include('view/menu.php'); ?>
+    <?php include('menu.php'); ?>
 
   </div>
 </div>
@@ -136,8 +154,8 @@
                     ?>
                   </h5>
                 </div>
-                <button type="button" class="btn btn-dark btn-block btn-lg"
-                        data-mdb-ripple-color="dark">Purchase</button>
+                <a href='/csc350/Website/index.php?choice=thankyou' type="button" class="btn btn-dark btn-block btn-lg"
+                        data-mdb-ripple-color="dark">Purchase</a>
               </div>
             </div>
           </div>

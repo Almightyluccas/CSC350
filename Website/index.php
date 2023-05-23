@@ -79,7 +79,7 @@ else if($choice=="products")
 
 			$productGen = new Products() ;
 			$products = $productGen->getProducts() ;
-			include 'view/products.php' ;
+			include 'view/products.php';
 
 		}
 }else if($choice =='singleProduct') {
@@ -91,32 +91,37 @@ else if($choice=="products")
 	$retrieveProduct = new Products() ;
 
 	$product = $retrieveProduct->getSingleProduct($productId) ;
-	include 'view/singleProduct.php' ;
+	include 'view/singleProduct.php';
 
 }
 else if($choice=='cart')
 {
 	session_start();
-	$customerId=$_SESSION['customerId'];
-	$cartDB = new Cart ;
-	$cartData = $cartDB->getCartData($customerId) ;
-	$cartTotalQuantity = $cartDB->getTotalQuantity($customerId) ;
+if (isset($_SESSION['ON'])) {
+	$customerId = $_SESSION['customerId'];
+	$cartDB = new Cart;
+	$cartData = $cartDB->getCartData($customerId);
+	$cartTotalQuantity = $cartDB->getTotalQuantity($customerId);
 
 
-	if ($cartTotalQuantity > 0 ) {
+	if ($cartTotalQuantity > 0) {
 		$cartTotalPrice = $cartDB->getCartTotalPrice($customerId);
-		$cartTotalPriceFormatted = '$' . number_format($cartTotalPrice, 2) ;
-		$cartTotalPrice += $cartTotalPrice * 0.08 ;
-		$cartTotalAfterTaxFormatted = '$' . number_format($cartTotalPrice, 2) ;
+		$cartTotalPriceFormatted = '$' . number_format($cartTotalPrice, 2);
+		$cartTotalPrice += $cartTotalPrice * 0.08;
+		$cartTotalAfterTaxFormatted = '$' . number_format($cartTotalPrice, 2);
 	} else {
 		$cartTotalPrice = $cartDB->getCartTotalPrice(0);
-		$cartTotalPriceFormatted = '$' . number_format(0, 2) ;
-		$cartTotalPrice += $cartTotalPrice * 0.08 ;
-		$cartTotalAfterTaxFormatted = '$' . number_format(0, 2) ;
+		$cartTotalPriceFormatted = '$' . number_format(0, 2);
+		$cartTotalPrice += $cartTotalPrice * 0.08;
+		$cartTotalAfterTaxFormatted = '$' . number_format(0, 2);
 	}
 
 
 	include('view/cartTemplate.php');
+} else {
+	$choice = 'login';
+	header("Location: index.php?message=Invalid-Login");
+}
 }
 else if($choice=="home")
 {
@@ -124,6 +129,7 @@ else if($choice=="home")
 }
 else if($choice=="about")
 {
+	session_start() ;
 	include('view/about.php');
 }
 else if($choice=="thankyou")
@@ -131,8 +137,17 @@ else if($choice=="thankyou")
 	session_start();
 	$customerId=$_SESSION['customerId'];
 	$dbcart=new Cart();
-	$dbcart->emptyCart($customerId);
-	include('view/thankyou.php');
+	$dbcart->emptyAllCartItems($customerId);
+
+	$start = time();
+	$delay = 3;
+
+	while (time() - $start < $delay) {
+		include('view/thankyou.php');
+		usleep(100000); // Sleep for 100 milliseconds (100000 microseconds)
+	}
+	include('view/home.php');
+
 }
 else if($choice=="contact")
 {
