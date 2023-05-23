@@ -1,5 +1,5 @@
-<?php
-include_once('checker.php');
+<?php 
+include_once('checker.php'); 
 ?>
 
 <html><head><title>LOGIN WEB SESSION</title>
@@ -12,7 +12,7 @@ include_once('checker.php');
   <style>
     #title {
       color: white;
-      font-zsie: 30px;
+      font-size: 30px;
     }
 
     .button {

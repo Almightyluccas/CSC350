@@ -40,8 +40,8 @@ const displayModal = (productName) => {
     modal.remove();
   });
   goToCartBtn.addEventListener('click', () => {
-    console.log('Button clicked!');
-    window.location.href = '/csc350/Website/index.php?choice=cart';
+
+    window.location.href = 'http://localhost/csc350/Website/index.php?choice=cart';
   });
 
   modalContainer.addEventListener('click', (event) => {

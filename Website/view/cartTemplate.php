@@ -61,101 +61,102 @@ include_once('checker.php');
         <div class="card-body p-0">
           <div class="row g-0">
             <div class="col-lg-8"">
-            <div class="p-2">
-              <div class="d-flex justify-content-between align-items-center mb-5">
-                <h1 class="fw-bold mb-0  mt-2 ml-3 text-black">Shopping Cart</h1>
+              <div class="p-2">
+                <div class="d-flex justify-content-between align-items-center mb-5">
+                  <h1 class="fw-bold mb-0  mt-2 ml-3 text-black">Shopping Cart</h1>
 
-                <h6 class="mb-0 text-muted" id="totalQuantityTop"  >
+                  <h6 class="mb-0 text-muted" id="totalQuantityTop"  >
 
-                  <?php
-                  include 'view/itemGeneration.php' ;
-                  use \View\itemGeneration;
-                  if (isset($cartTotalQuantity)) {
+                    <?php
+                    include 'view/itemGeneration.php' ;
+                    use View\itemGeneration;
+                    if (isset($cartTotalQuantity)) {
 
-                    echo $cartTotalQuantity ;
-                    if ($cartTotalQuantity == 1 ) {
-                      echo ' item' ;
-                    } else {
-                      echo ' items' ;
+                      echo $cartTotalQuantity ;
+                      if ($cartTotalQuantity == 1 ) {
+                        echo ' item' ;
+                      } else {
+                        echo ' items' ;
+                      }
                     }
-                  }
-                  ?>
+                    ?>
 
-                </h6>
+                  </h6>
 
-              </div>
-              <div class="overflow-auto" style="max-height: 50vh; overflow-y: auto; ">
-                <div class="px-3">
-                  <?php
-                  $cart = new itemGeneration() ;
-                  if(isset($cartData)) {
-                    $cart->displayCart($cartData);
-                  }else {
-                    error_log('there was an error inserting cart data into displayCart() ') ;
-                  }
-                  ?>
                 </div>
-              </div>
-              <hr class="my-4">
-              <div class="pt-5">
-                <h6 class="mb-0"><a href="/csc350/Website/index.php?choice=products" class="text-body"><i
-                      class="fas fa-long-arrow-alt-left me-2"></i>Back to store</a></h6>
-              </div>
+          <div class="overflow-auto" style="max-height: 50vh; overflow-y: auto; ">
+            <div class="px-3">
+                <?php
+                $cart = new itemGeneration() ;
+                if(isset($cartData)) {
+                  $cart->displayCart($cartData);
+                }else {
+                  error_log('there was an error inserting cart data into displayCart() ') ;
+                }
+                ?>
             </div>
           </div>
-          <div class="col-lg-4 bg-grey">
-            <div class="p-5">
-              <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
-              <hr class="my-4">
-              <div class="d-flex justify-content-between mb-4" >
-                <h5 class="text-uppercase" id="totalQuantitySide">items <?php
-                  if(isset($cartTotalQuantity)) {
-                    echo $cartTotalQuantity ;
-                  } else {
-                    echo 0 ;
-                  }
-                  ?>
-                </h5>
-                <h5 id="cartTotalPrice" > <?php
-                  if(isset($cartTotalPriceFormatted)) {
-                    echo $cartTotalPriceFormatted ;
-                  } else {
-                    echo 0 ;
-                  }
-                  ?>
-                </h5>
-              </div>
-              <h5 class="text-uppercase mb-3">Shipping</h5>
-              <div class="mb-4 pb-2">
-                <select class="select">
-                  <option value="1">Standard Delivery - Free</option>
-                  <option value="2">Three Day Delivery - $5.00</option>
-                  <option value="3">Same Day Delivery - $8.00</option>
-                </select>
-              </div>
-              <h5 class="text-uppercase mb-3">Give code</h5>
-              <div class="mb-5">
-                <div class="form-outline">
-                  <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3ExampleA2">Enter your code</label>
-                  <!--                    TODO: MAKE A CODE THAT YOU CAN ACTUALLY USE FOR A DISCOUNT-->
-
+                <hr class="my-4">
+                <div class="pt-5">
+                  <h6 class="mb-0"><a href="/csc350/Website/index.php?choice=products" class="text-body"><i
+                        class="fas fa-long-arrow-alt-left me-2"></i>Back to store</a></h6>
                 </div>
               </div>
-              <hr class="my-4">
-              <div class="d-flex justify-content-between mb-5">
-                <h5 class="text-uppercase">Total </h5>
-                <h5 id="totalPriceAfterTax"><?php
-                  if(isset($cartTotalAfterTaxFormatted)) {
-                    echo $cartTotalAfterTaxFormatted ;
-                  } else {
-                    echo 0 ;
-                  } ;
-                  ?>
-                </h5>
+            </div>
+            <div class="col-lg-4 bg-grey">
+              <div class="p-5">
+                <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                <hr class="my-4">
+                <div class="d-flex justify-content-between mb-4" >
+                  <h5 class="text-uppercase" id="totalQuantitySide">items <?php
+                    if(isset($cartTotalQuantity)) {
+                      echo $cartTotalQuantity ;
+                    } else {
+                      echo 0 ;
+                    }
+                    ?>
+                  </h5>
+                  <h5 id="cartTotalPrice" > <?php
+                    if(isset($cartTotalPriceFormatted)) {
+                      echo $cartTotalPriceFormatted ;
+                    } else {
+                     echo 0 ;
+                    }
+                    ?>
+                  </h5>
+                </div>
+                <h5 class="text-uppercase mb-3">Shipping</h5>
+                <div class="mb-4 pb-2">
+                  <select class="select">
+                    <option value="1">Standard Delivery - Free</option>
+                    <option value="2">Three Day Delivery - $5.00</option>
+                    <option value="3">Same Day Delivery - $8.00</option>
+                  </select>
+                </div>
+                <h5 class="text-uppercase mb-3">Give code</h5>
+                <div class="mb-5">
+                  <div class="form-outline">
+                    <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                    <label class="form-label" for="form3ExampleA2">Enter your code</label>
+<!--                    TODO: MAKE A CODE THAT YOU CAN ACTUALLY USE FOR A DISCOUNT-->
+
+                  </div>
+                </div>
+                <hr class="my-4">
+                <div class="d-flex justify-content-between mb-5">
+                  <h5 class="text-uppercase">Total </h5>
+                  <h5 id="totalPriceAfterTax"><?php
+                    if(isset($cartTotalAfterTaxFormatted)) {
+                      echo $cartTotalAfterTaxFormatted ;
+                    } else {
+                      echo 0 ;
+                    } ;
+                    ?>
+                  </h5>
+                </div>
+                <a href='/csc350/Website/index.php?choice=thankyou' type="button" class="btn btn-dark btn-block btn-lg"
+                        data-mdb-ripple-color="dark">Purchase</a>
               </div>
-              <a href='/csc350/Website/index.php?choice=thankyou' type="button" class="btn btn-dark btn-block btn-lg"
-                 data-mdb-ripple-color="dark">Purchase</a>
             </div>
           </div>
         </div>
@@ -163,8 +164,8 @@ include_once('checker.php');
     </div>
   </div>
 </div>
-</div>
 
 </body>
 </html>
+
 

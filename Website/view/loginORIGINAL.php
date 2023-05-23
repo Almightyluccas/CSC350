@@ -1,6 +1,3 @@
-<?php
-include_once('checker.php');
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -38,6 +35,7 @@ include_once('checker.php');
   border: 2px; 
   width: 99px; 
   //margin: 0 0 0 212px;
+  margin: 1 1 1 1;  
   height: 33px;
   padding: 2px 0 3px 0;
   cursor: pointer; 
@@ -58,40 +56,36 @@ include_once('checker.php');
   border: 0;
   background: none;}
 </style>
-    <style>
-      #title {
-        color: white;
-        font-size: 30px;
-      }
-
-      .button {
-        background: black;
-        font-size: 15px;
-      }
-
-    </style>
-
   </head>
-  <body >
-
-  <div id="nav" style="background:black ;color:white;">
-    <div class="col-sm nav-align"><h1 id="title">Elite Sneakers</h1></div>
-    <div class="col-sm nav-align">
+  <body>
+    <div id="nav" style="background:black;color:white;">
+      <div class="col-sm nav-align"><h1 id="title">BMCC ELECTRONICS</h1></div>
+      <div class="col-sm nav-align">
 
       <?php include('menu.php'); ?>
-
+      
+      </div>
     </div>
-  </div>
 <center>
     <div id="content">
         <div style="text-align: left; padding: 0;">
-                <h1 style="font: normal 179% 'century gothic', arial, sans-serif;color: #43423F;margin: 0 0 15px 0;padding: 15px 0 5px 0;" >Logoff</h1>
+            <div id="content">
+                <h1 style="font: normal 179% 'century gothic', arial, sans-serif;color: #43423F;margin: 0 0 15px 0;padding: 15px 0 5px 0;" >Login</h1>
+                <form action='index.php' method='get'>
+                <input type='hidden' name='choice' value='logon' />
                 <div class="form_settings">
-               <form action="index.php" method="get">
-                <input type="hidden" name="choice" value="logoff2" />
-                <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="Logoff" />
+                <p><span>Username:</span><input class="contact" type="text" name='username' /></p>
+                <p><span>password:</span><input class="contact" type="password" name='password'  /></p>
+                <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="contact_submitted" value="submit" />
+                  <br><span>&nbsp;</span><a style="margin-left:20px" href="index.php?choice=registration">Register</a>
+                </p>
+                </div>
+                <?php
+	if(isset($_GET['messsage'])) echo "<div style='color:red;width:330px'>".$_GET['message']."</div>";
+	if(isset($message)) echo "<div style='color:red;width:330px'>".$message."</div>";
+	?>
                 </form>
-              </div>
+                </div>
       </div>
     </center>
   </body>
