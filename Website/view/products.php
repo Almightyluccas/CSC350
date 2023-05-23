@@ -44,7 +44,7 @@ include_once('checker.php');
 <?php
 include 'view/itemGeneration.php' ;
 
-$itemGen = new \View\itemGeneration() ;
+$itemGen = new \originalFiles\WebProject\View\itemGeneration() ;
 if (isset($products)){
   $itemGen->displayProducts($products, 3);
 } else {

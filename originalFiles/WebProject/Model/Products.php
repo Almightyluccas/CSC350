@@ -1,6 +1,6 @@
 <?php
 
-namespace model;
+namespace originalFiles\WebProject\Model;
 use mysql_xdevapi\Exception;
 
 //TODO: fix empty auto column add if products doesn't fill full space

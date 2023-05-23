@@ -1,6 +1,6 @@
 <?php
 
-namespace view;
+namespace originalFiles\WebProject\View;
 
 use mysql_xdevapi\Exception;
 

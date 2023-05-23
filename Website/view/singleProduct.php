@@ -63,7 +63,7 @@ include_once('checker.php');
 
 include 'view/itemGeneration.php' ;
 
-$itemGen = new \view\itemGeneration() ;
+$itemGen = new \originalFiles\WebProject\View\itemGeneration() ;
 
 if (isset($product)) {
   $itemGen->displaySingleProduct($product) ;

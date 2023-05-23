@@ -1,5 +1,5 @@
 <?php
-namespace model;
+namespace originalFiles\WebProject\Model;
 
 use mysqli;
 

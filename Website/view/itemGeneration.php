@@ -2,7 +2,7 @@
 
 namespace view;
 
-use model\Products;
+use originalFiles\WebProject\Model\Products;
 use mysql_xdevapi\Exception;
 
 class itemGeneration {

@@ -16,9 +16,9 @@ Stack trace: #0 C:\xampp\htdocs\CSC350\Website\model\Cart.php(78): mysqli_query(
  * */
 
 
-use model\Login;
-use model\Cart;
-use model\Products;
+use originalFiles\WebProject\Model\Login;
+use originalFiles\WebProject\Model\Cart;
+use originalFiles\WebProject\Model\Products;
 require 'model/Cart.php';
 require 'model/Products.php';
 include('library.php');
