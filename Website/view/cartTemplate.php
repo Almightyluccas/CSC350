@@ -1,8 +1,3 @@
-<?php
-include_once('checker.php');
-?>
-
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -69,7 +64,7 @@ include_once('checker.php');
 
                   <?php
                   include 'view/itemGeneration.php' ;
-                  use \View\itemGeneration;
+                  use View\itemGeneration;
                   if (isset($cartTotalQuantity)) {
 
                     echo $cartTotalQuantity ;
@@ -154,8 +149,8 @@ include_once('checker.php');
                   ?>
                 </h5>
               </div>
-              <a href='/csc350/Website/index.php?choice=thankyou' type="button" class="btn btn-dark btn-block btn-lg"
-                 data-mdb-ripple-color="dark">Purchase</a>
+              <a href="/csc350/Website/index.php?choice=thankyou" type="button" class="btn btn-dark btn-block btn-lg"
+                      data-mdb-ripple-color="dark">Purchase</a>
             </div>
           </div>
         </div>

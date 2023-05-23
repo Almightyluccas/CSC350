@@ -95,7 +95,8 @@ else
 
   }
   else if($choice=='cart') {
-    session_start();
+
+    session_start() ;
     if (isset($_SESSION['ON'])) {
 
       $customerId = $_SESSION['customerId'];
