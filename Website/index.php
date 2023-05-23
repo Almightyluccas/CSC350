@@ -75,24 +75,29 @@ if($choice=='logon')
 }
 else if($choice=="products")
 {
-		{
+if (isset($_SESSION['ON'])) {
 
 			$productGen = new Products() ;
 			$products = $productGen->getProducts() ;
 			include 'view/products.php';
-
-		}
+		} else {
+	$choice = 'login';
+	header("Location: index.php?message=Invalid-Login");
+}
 }else if($choice =='singleProduct') {
 
 
+if (isset($_SESSION['ON'])) {
+	$productId = $_GET['productId'];
+	$routedFrom = $_GET['frm'];
+	$retrieveProduct = new Products();
 
-	$productId = $_GET['productId'] ;
-	$routedFrom = $_GET['frm'] ;
-	$retrieveProduct = new Products() ;
-
-	$product = $retrieveProduct->getSingleProduct($productId) ;
+	$product = $retrieveProduct->getSingleProduct($productId);
 	include 'view/singleProduct.php';
-
+}else {
+	$choice = 'login';
+	header("Location: index.php?message=Invalid-Login");
+}
 }
 else if($choice=='cart')
 {
@@ -122,21 +127,29 @@ if (isset($_SESSION['ON'])) {
 	$choice = 'login';
 	header("Location: index.php?message=Invalid-Login");
 }
+} else if($choice=="home") {
+  if (isset($_SESSION['ON'])) {
+	  include('view/home.php');
+} else{
+		$choice = 'login';
+		header("Location: index.php?message=Invalid-Login");
+	}
 }
-else if($choice=="home")
-{
-	include('view/home.php');
-}
-else if($choice=="about")
-{
-	session_start() ;
+else if($choice=="about") {
+if (isset($_SESSION['ON'])) {
+	session_start();
 	include('view/about.php');
+}else {
+	$choice = 'login';
+	header("Location: index.php?message=Invalid-Login");
+}
 }
 else if($choice=="thankyou")
 {
+if (isset($_SESSION['ON'])) {
 	session_start();
-	$customerId=$_SESSION['customerId'];
-	$dbcart=new Cart();
+	$customerId = $_SESSION['customerId'];
+	$dbcart = new Cart();
 	$dbcart->emptyAllCartItems($customerId);
 
 	$start = time();
@@ -147,11 +160,19 @@ else if($choice=="thankyou")
 		usleep(100000); // Sleep for 100 milliseconds (100000 microseconds)
 	}
 	include('view/home.php');
+}else {
+	$choice = 'login';
+	header("Location: index.php?message=Invalid-Login");
+}
 
 }
-else if($choice=="contact")
-{
+else if($choice=="contact") {
+if (isset($_SESSION['ON'])) {
 	include('view/contact.php');
+}else {
+	$choice = 'login';
+	header("Location: index.php?message=Invalid-Login");
+}
 }
 else if($choice=="registration")
 {
