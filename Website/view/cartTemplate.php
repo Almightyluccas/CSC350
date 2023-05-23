@@ -69,7 +69,7 @@ include_once('checker.php');
 
                     <?php
                     include 'view/itemGeneration.php' ;
-                    use View\itemGeneration;
+                    use originalFiles\WebProject\View\itemGeneration;
                     if (isset($cartTotalQuantity)) {
 
                       echo $cartTotalQuantity ;
