@@ -35,7 +35,7 @@
   border: 2px; 
   width: 99px; 
   //margin: 0 0 0 212px;
-  margin: 1 1 1 1;  
+
   height: 33px;
   padding: 2px 0 3px 0;
   cursor: pointer; 
