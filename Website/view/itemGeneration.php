@@ -73,7 +73,7 @@ class itemGeneration {
         <img src="' . $imageUrl . '" class="img-fluid rounded-3" alt="' . $productName . '">
       </div>
       <div class="col-md-3 col-lg-3 col-xl-3">
-        <a href="/csc350/Website/index.php?choice=singleProduct&productId='.$productId.'&frm=cart" class="text-muted">' . $productName . '</a>
+        <a href="index.php?choice=singleProduct&productId='.$productId.'&frm=cart" class="text-muted">' . $productName . '</a>
       </div>
       <div class="col-md-3 col-lg-3 col-xl-2 d-flex" >
         <div class="col-sm-12">
