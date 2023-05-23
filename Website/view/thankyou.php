@@ -1,5 +1,5 @@
-<?php 
-include_once('checker.php'); 
+<?php
+include_once('checker.php');
 ?>
 
 <html><head><title>LOGIN WEB SESSION</title>

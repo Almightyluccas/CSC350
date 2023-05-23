@@ -41,16 +41,16 @@ include_once('checker.php');
   </div>
 </div>
 <div class="container ">
-<?php
-include 'view/itemGeneration.php' ;
+  <?php
+  include 'view/itemGeneration.php' ;
 
-$itemGen = new \originalFiles\WebProject\View\itemGeneration() ;
-if (isset($products)){
-  $itemGen->displayProducts($products, 3);
-} else {
-  error_log('there was an error generating the products at Products.php $products variable ') ;
-}
-?>
+  $itemGen = new \View\itemGeneration() ;
+  if (isset($products)){
+    $itemGen->displayProducts($products, 3);
+  } else {
+    error_log('there was an error generating the products at Products.php $products variable ') ;
+  }
+  ?>
 
 </div>
 <script src="javascript/productAjax.js" > </script>
