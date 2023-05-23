@@ -1,23 +1,24 @@
 <?php
 
 
-
-
-
+use model\dataBaseCreation;
 use \Model\Login;
 use \Model\Cart;
 use \Model\Products;
+require 'model/dataBaseCreation.php' ;
 require 'model/Cart.php';
 require 'model/Products.php';
 include('library.php');
 include_once('model/Login.php');
 
 
+
 $choice=readValue('choice');
 $message=readValue('message');
 
-if($choice==null ||$choice=='login')
-{
+if($choice==null ||$choice=='login') {
+  $database = New dataBaseCreation() ;
+  $database->createDatabase();
   include('view/login.php');
 }
 
