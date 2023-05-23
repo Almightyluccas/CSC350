@@ -18,13 +18,27 @@ include_once('checker.php');
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
   <title>Document</title>
 
+  <style>
+    #title {
+      color: white;
+      font-size: 30px;
+    }
+
+    .button {
+      background: black;
+      font-size: 15px;
+    }
+
+  </style>
+
 </head>
 <body >
-<div id="nav" style="background:black;color:white;">
-  <div class="col-sm nav-align"><h1 id="title">BMCC ELECTRONICS</h1></div>
+
+<div id="nav" style="background:black ;color:white;">
+  <div class="col-sm nav-align"><h1 id="title">Elite Sneakers</h1></div>
   <div class="col-sm nav-align">
 
-    <?php include('view/menu.php'); ?>
+    <?php include('menu.php'); ?>
 
   </div>
 </div>
@@ -45,20 +59,20 @@ include_once('checker.php');
     ?>
 
   </div>
-<?php
+  <?php
 
-include 'view/itemGeneration.php' ;
+  include 'view/itemGeneration.php' ;
 
-$itemGen = new \view\itemGeneration() ;
+  $itemGen = new \View\itemGeneration() ;
 
-if (isset($product)) {
-  $itemGen->displaySingleProduct($product) ;
-} else {
-  error_log('there was an error generating the products at Products.php $products variable ') ;
-}
+  if (isset($product)) {
+    $itemGen->displaySingleProduct($product) ;
+  } else {
+    error_log('there was an error generating the products at Products.php $products variable ') ;
+  }
 
 
-?>
+  ?>
 </div>
 
 
