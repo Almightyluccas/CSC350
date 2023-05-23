@@ -19,23 +19,23 @@ class dataBaseCreation {
       $checkResult = mysqli_query($conn, $checkDatabaseQuery);
 
       if (mysqli_num_rows($checkResult) == 0) {
-        $createDatabaseQuery = "CREATE DATABASE $databaseName";
-        if (mysqli_query($conn, $createDatabaseQuery)) {
+        $script = file_get_contents('sql/dbCreationScript.sql');
+        if (mysqli_multi_query($conn, $script)) {
+          while (mysqli_next_result($conn)) {
+          }
           mysqli_close($conn);
           ob_start();
           header("Location: index.php?choice=login");
           ob_end_flush();
           exit();
         } else {
-          echo 'Error creating database: ' . mysqli_error($conn);
+
+          echo 'Error executing script: ' . mysqli_error($conn);
         }
-      } else {
-        return 1 ;
       }
-    } else {
-      return 0 ;
     }
   }
+
 
 
 }

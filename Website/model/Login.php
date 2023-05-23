@@ -67,7 +67,6 @@ class Login
 			$password = $row['password'];
 			if (($user == $userid) && ($pass == $password)) {
 				return true;
-				break;
 			}
 		}
 		####################################################
