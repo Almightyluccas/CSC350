@@ -12,7 +12,7 @@ include_once('checker.php');
   <style>
     #title {
       color: white;
-      font-size: 30px;
+      font-zsie: 30px;
     }
 
     .button {
