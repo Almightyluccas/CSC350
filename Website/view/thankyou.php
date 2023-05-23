@@ -1,6 +1,4 @@
-<?php 
-include_once('checker.php'); 
-?>
+
 
 <html><head><title>LOGIN WEB SESSION</title>
   <link rel="stylesheet" href="view/css/confetti_cuisine.css" />

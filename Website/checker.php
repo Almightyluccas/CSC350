@@ -10,15 +10,15 @@ if ($_SESSION['ON'] ==false || $_SESSION['ON']==null) {
   //include('index.php');
 }
 else
-if (isset($_SESSION['LAST_ACTIVITY'])) 
-	if ( time() - $_SESSION['LAST_ACTIVITY'] > 600) 
-	{
-		session_unset();     // unset $_SESSION variable for the run-time 
-		session_destroy();   // destroy session data in storage
-		setcookie(session_name(),"",time()-1,"/");
-		setcookie(session_name(),"",time()-1);
+  if (isset($_SESSION['LAST_ACTIVITY']))
+    if ( time() - $_SESSION['LAST_ACTIVITY'] > 600)
+    {
+      session_unset();     // unset $_SESSION variable for the run-time
+      session_destroy();   // destroy session data in storage
+      setcookie(session_name(),"",time()-1,"/");
+      setcookie(session_name(),"",time()-1);
 
-		header( 'Location: index.php?message=Session-Time-Out' );
-	}
+      header( 'Location: index.php?message=Session-Time-Out' );
+    }
 
 ?>

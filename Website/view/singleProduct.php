@@ -59,20 +59,22 @@ include_once('checker.php');
     ?>
 
   </div>
-<?php
 
-include 'view/itemGeneration.php' ;
+  <?php
 
-$itemGen = new \originalFiles\WebProject\View\itemGeneration() ;
+  include 'view/itemGeneration.php' ;
 
-if (isset($product)) {
-  $itemGen->displaySingleProduct($product) ;
-} else {
-  error_log('there was an error generating the products at Products.php $products variable ') ;
-}
+  $itemGen = new \View\itemGeneration() ;
+
+  if (isset($product)) {
+    $itemGen->displaySingleProduct($product) ;
+  } else {
+    error_log('there was an error generating the products at Products.php $products variable ') ;
+  }
 
 
-?>
+  ?>
+
 </div>
 
 
