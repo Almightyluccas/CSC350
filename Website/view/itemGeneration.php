@@ -12,7 +12,7 @@ class itemGeneration {
       <div class="card ">
         <img class="card-img-top img-fluid" src="' . $productImage . '" alt="'.$productName.'">
         <div class="card-body">
-          <a href="/csc350/Website/index.php?choice=singleProduct&productId='.$productId.'&frm=products" class="card-title h5 productName">' . $productName . '</a>
+          <a href="index.php?choice=singleProduct&productId='.$productId.'&frm=products" class="card-title h5 productName">' . $productName . '</a>
           <p class="card-text h5">$' . $productPrice . '</p>
 <a href="javascript:void(0)" class="show-description-btn  bg-transparent pl-0  text-decoration-none text-muted text-1"
        style="text-decoration: none ;">Show Description</a>          
