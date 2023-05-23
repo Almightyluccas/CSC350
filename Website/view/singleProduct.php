@@ -59,6 +59,7 @@ include_once('checker.php');
     ?>
 
   </div>
+
   <?php
 
   include 'view/itemGeneration.php' ;
@@ -73,6 +74,7 @@ include_once('checker.php');
 
 
   ?>
+
 </div>
 
 

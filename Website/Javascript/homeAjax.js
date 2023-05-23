@@ -82,4 +82,6 @@ addToCartBtn.addEventListener('click', () => {
       displayModalHome(productName) ;
     })
     .catch(error => console.error(`there was an error with ajax request LOCATED AT homeAjax.js:  ${error}`));
+
 })
+

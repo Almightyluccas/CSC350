@@ -41,6 +41,7 @@ include_once('checker.php');
   </div>
 </div>
 <div class="container ">
+
   <?php
   include 'view/itemGeneration.php' ;
 
@@ -51,6 +52,7 @@ include_once('checker.php');
     error_log('there was an error generating the products at Products.php $products variable ') ;
   }
   ?>
+
 
 </div>
 <script src="javascript/productAjax.js" > </script>

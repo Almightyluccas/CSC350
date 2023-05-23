@@ -1,3 +1,8 @@
+<?php
+include_once('checker.php');
+?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,6 +61,7 @@
         <div class="card-body p-0">
           <div class="row g-0">
             <div class="col-lg-8"">
+
             <div class="p-2">
               <div class="d-flex justify-content-between align-items-center mb-5">
                 <h1 class="fw-bold mb-0  mt-2 ml-3 text-black">Shopping Cart</h1>
@@ -89,6 +95,7 @@
                     error_log('there was an error inserting cart data into displayCart() ') ;
                   }
                   ?>
+
                 </div>
               </div>
               <hr class="my-4">
@@ -97,6 +104,7 @@
                       class="fas fa-long-arrow-alt-left me-2"></i>Back to store</a></h6>
               </div>
             </div>
+
           </div>
           <div class="col-lg-4 bg-grey">
             <div class="p-5">
@@ -136,6 +144,7 @@
                   <!--                    TODO: MAKE A CODE THAT YOU CAN ACTUALLY USE FOR A DISCOUNT-->
 
                 </div>
+
               </div>
               <hr class="my-4">
               <div class="d-flex justify-content-between mb-5">

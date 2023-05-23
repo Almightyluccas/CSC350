@@ -20,10 +20,12 @@ include_once('checker.php');
     .form_settings p
     { padding: 0 0 0px 0;}
 
+
     .form_settings span
     { float: left;
       width: 200px;
       text-align: left;}
+
 
     .form_settings input, .form_settings textarea
     { padding: 5px;
@@ -44,9 +46,11 @@ include_once('checker.php');
       background: #3B3B3B;
       color: #FFF;}
 
+
     .form_settings textarea, .form_settings select
     { font: 100% arial;
       width: 299px;}
+
 
     .form_settings select
     { width: 310px;}
@@ -82,6 +86,7 @@ include_once('checker.php');
 
   </div>
 </div>
+
 <center>
   <div id="content">
     <div style="text-align: left; padding: 0;">
