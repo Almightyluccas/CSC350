@@ -1,6 +1,3 @@
-<?php
-include_once('checker.php');
-?>
 
 
 <!doctype html>

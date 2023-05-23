@@ -4,9 +4,9 @@
 
 
 
-use originalFiles\WebProject\Model\Login;
-use originalFiles\WebProject\Model\Cart;
-use originalFiles\WebProject\Model\Products;
+use \Model\Login;
+use \Model\Cart;
+use \Model\Products;
 require 'model/Cart.php';
 require 'model/Products.php';
 include('library.php');
@@ -162,137 +162,5 @@ else
     $message='Logoff-Succesfull';
     include('view/login.php');
   }
-?>
-=======
-else if($choice=="products")
-{
-if (isset($_SESSION['ON'])) {
-
-			$productGen = new Products() ;
-			$products = $productGen->getProducts() ;
-			include 'view/products.php';
-		} else {
-	$choice = 'login';
-	header("Location: index.php?message=Invalid-Login");
-}
-}else if($choice =='singleProduct') {
-
-
-if (isset($_SESSION['ON'])) {
-	$productId = $_GET['productId'];
-	$routedFrom = $_GET['frm'];
-	$retrieveProduct = new Products();
-
-	$product = $retrieveProduct->getSingleProduct($productId);
-	include 'view/singleProduct.php';
-}else {
-	$choice = 'login';
-	header("Location: index.php?message=Invalid-Login");
-}
-}
-else if($choice=='cart')
-{
-	session_start();
-if (isset($_SESSION['ON'])) {
-	$customerId = $_SESSION['customerId'];
-	$cartDB = new Cart;
-	$cartData = $cartDB->getCartData($customerId);
-	$cartTotalQuantity = $cartDB->getTotalQuantity($customerId);
-
-
-	if ($cartTotalQuantity > 0) {
-		$cartTotalPrice = $cartDB->getCartTotalPrice($customerId);
-		$cartTotalPriceFormatted = '$' . number_format($cartTotalPrice, 2);
-		$cartTotalPrice += $cartTotalPrice * 0.08;
-		$cartTotalAfterTaxFormatted = '$' . number_format($cartTotalPrice, 2);
-	} else {
-		$cartTotalPrice = $cartDB->getCartTotalPrice(0);
-		$cartTotalPriceFormatted = '$' . number_format(0, 2);
-		$cartTotalPrice += $cartTotalPrice * 0.08;
-		$cartTotalAfterTaxFormatted = '$' . number_format(0, 2);
-	}
-
-
-	include('view/cartTemplate.php');
-} else {
-	$choice = 'login';
-	header("Location: index.php?message=Invalid-Login");
-}
-} else if($choice=="home") {
-  if (isset($_SESSION['ON'])) {
-	  include('view/home.php');
-} else{
-		$choice = 'login';
-		header("Location: index.php?message=Invalid-Login");
-	}
-}
-else if($choice=="about") {
-if (isset($_SESSION['ON'])) {
-	session_start();
-	include('view/about.php');
-}else {
-	$choice = 'login';
-	header("Location: index.php?message=Invalid-Login");
-}
-}
-else if($choice=="thankyou")
-{
-if (isset($_SESSION['ON'])) {
-	session_start();
-	$customerId = $_SESSION['customerId'];
-	$dbcart = new Cart();
-	$dbcart->emptyAllCartItems($customerId);
-
-	$start = time();
-	$delay = 3;
-
-	while (time() - $start < $delay) {
-		include('view/thankyou.php');
-		usleep(100000); // Sleep for 100 milliseconds (100000 microseconds)
-	}
-	include('view/home.php');
-}else {
-	$choice = 'login';
-	header("Location: index.php?message=Invalid-Login");
-}
-
-}
-else if($choice=="contact") {
-if (isset($_SESSION['ON'])) {
-	include('view/contact.php');
-}else {
-	$choice = 'login';
-	header("Location: index.php?message=Invalid-Login");
-}
-}
-else if($choice=="registration")
-{
-		include("view/registration.php");
-}
-else if($choice=="register")
-{
-	$user=$_GET['username'];
-	$pass=$_GET['password'];
-	$db=new Login();
-	if($db->register($user,$pass)) header("Location: index.php");
-	else
-	{
-		$message="ERROR: Userid Already In Use";
-		include("view/registration.php");
-	}
-}
-else if($choice=="logoff")
-{
-	include('view/logoff.php');
-}
-else if($choice=="logoff2")
-{
-	session_start();
-	session_unset();
-	session_destroy();
-	setcookie(session_name(),"",time()-1,"/");
-	$message='Logoff-Succesfull';
-	include('view/login.php');
-}
 ?>
 
