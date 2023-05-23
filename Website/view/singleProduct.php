@@ -47,10 +47,10 @@ include_once('checker.php');
   <div class="pt-5">
     <?php
     if(isset($routedFrom) && $routedFrom == 'products')  {
-      echo '<h6 class="mb-0"><a href="/csc350/Website/index.php?choice=products" class="text-body"><i
+      echo '<h6 class="mb-0"><a href="index.php?choice=products" class="text-body"><i
           class="fas fa-long-arrow-alt-left me-2"></i>Back to store</a></h6>' ;
     } else if(isset($routedFrom) && $routedFrom == 'cart') {
-      echo '<h6 class="mb-0"><a href="/csc350/Website/index.php?choice=cart" class="text-body"><i
+      echo '<h6 class="mb-0"><a href="index.php?choice=cart" class="text-body"><i
           class="fas fa-long-arrow-alt-left me-2"></i>Back to cart</a></h6>' ;
     }
 

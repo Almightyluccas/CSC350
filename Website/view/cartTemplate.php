@@ -97,7 +97,7 @@
               </div>
               <hr class="my-4">
               <div class="pt-5">
-                <h6 class="mb-0"><a href="/csc350/Website/index.php?choice=products" class="text-body"><i
+                <h6 class="mb-0"><a href="index.php?choice=products" class="text-body"><i
                       class="fas fa-long-arrow-alt-left me-2"></i>Back to store</a></h6>
               </div>
             </div>
@@ -155,7 +155,7 @@
                   ?>
                 </h5>
               </div>
-              <a href="/csc350/Website/index.php?choice=thankyou" type="button" class="btn btn-dark btn-block btn-lg"
+              <a href="index.php?choice=thankyou" type="button" class="btn btn-dark btn-block btn-lg"
                       data-mdb-ripple-color="dark">Purchase</a>
             </div>
           </div>
