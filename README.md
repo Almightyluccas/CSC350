@@ -1,3 +1,3 @@
 # CSC350
 
-Compiler Project and Website Project
+Group Website Project for Software Engineering class
