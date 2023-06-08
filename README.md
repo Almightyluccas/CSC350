@@ -2,6 +2,14 @@
 
 The Group Website Project is a web development project undertaken as part of a Software Engineering class. The main objective of this project was to gain hands-on experience in collaborative web development using GitHub, fostering seamless group collaboration and version control.
 
+## Technologies Used
+
+The following technologies were utilized in the development of this project:
+
+- Front-end: HTML, CSS, JavaScript, Bootstrap
+- Back-end: PHP
+- Database: MySQL
+- Server: Apache
 
 ## Description 
 The Group Website Project involved designing and developing a dynamic website that showcased our collective skills and expertise in software engineering principles. Throughout the project, we followed best practices and utilized modern web technologies to ensure a high-quality end product. The website served as a platform to demonstrate our understanding of software engineering concepts, including project planning, requirement gathering, design, implementation, and testing.
